@@ -20,7 +20,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 sleep 5
-cd /home/pi
+#cd /home/pi
 
 #copy any mp4 file found in external drives
 count=`ls -1 /media/*.mp4 2>/dev/null | wc -l`
@@ -45,6 +45,9 @@ python main.py
 else
 echo "No videos found in /home/pi/raspberry-playlist/videos/"
 echo "Aborted"
+echo ""
+echo ""
+echo ""
 fi 
 
 

@@ -7,7 +7,7 @@ Creates a video player with infinite random seamless playback
 ### Install
 run 
 ```
-sudo INSTALL.sh
+sudo sh INSTALL.sh
 ```
 
 ### Execute
