@@ -27,6 +27,7 @@ player2 = OMXPlayer( videos[1])
 #player2.hide_video()
 
 sleep(player2.duration())
+player2.hide_video()
 player.play()
 
 
