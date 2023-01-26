@@ -70,7 +70,7 @@ if __name__ == "__main__":
         next_thread.start()
         end = time.time()
         elapsed=(end-start)
-        time.sleep(RSV.loaded_videos[0].duration()-elapsed)
+        time.sleep(RSV.loaded_videos[0].duration()-0.1)
 
 
 
