@@ -18,5 +18,5 @@ def get_random_video(lastvideo=False):
 
 videos=glob.glob(vidfolder+"/*.mp4")
 
-for v in video:
+for v in videos:
     os.system('omxplayer "{}" > /dev/null'.format(v))
