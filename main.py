@@ -17,6 +17,15 @@ def get_random_video(lastvideo=False):
 
 videos=glob.glob(vidfolder+"/*.mp4")
 
+videosB=[]
+
+for i,v in enumerate(videos):
+    videosB.append(player = OMXPlayer( v,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(i),args='--no-osd --no-keys -b'))
+    videosB[i].pause()
+
+print("dbus pool ready")
+
+"""
 #pick a video to start have the var declared
 pickedvideo=get_random_video()
 
@@ -27,5 +36,6 @@ with open('playlist.m3u', 'w') as f:
         f.write(pickedvideo+"\n")
 
 print("Done, loading playlist and launching player")
+"""
 #execute player 
 #os.system("vlc -I ncurses --video-on-top --fullscreen --loop --no-osd playlist.m3u")
