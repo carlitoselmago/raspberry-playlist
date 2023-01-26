@@ -61,7 +61,7 @@ if __name__ == "__main__":
         RSV.loaded_videos.pop(0)
         #play loaded and ready video 
         print("loaded",RSV.loaded_videos)
-        RSV.loaded_videos[0].play()
+        RSV.loaded_videos[-1].play()
         #load next video
         next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
         next_thread.start()
