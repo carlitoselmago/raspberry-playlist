@@ -23,7 +23,7 @@ videos=glob.glob(vidfolder+"/*.mp4")
 videosB=[]
 
 for i,v in enumerate(videos):
-    videosB.append(player = OMXPlayer( v,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(i),args='--no-osd --no-keys -b'))
+    videosB.append(OMXPlayer( v,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(i),args='--no-osd --no-keys -b'))
     videosB[i].pause()
 
 print("dbus pool ready")
