@@ -23,10 +23,11 @@ player = OMXPlayer( videos[0])
 player.pause()
 #player.hide_video()
 player2 = OMXPlayer( videos[1])
-#player2.pause()
-#player2.hide_video()
+player2.pause()
+player2.hide_video()
 
 sleep(player2.duration())
+player2.pause()
 player2.hide_video()
 player.play()
 
