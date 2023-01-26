@@ -38,7 +38,7 @@ class randomSeamlessVideos():
         if (i % 2) == 0:
             #if even
             dbus=2
-        print("dbus",dbus)
+        #print("dbus",dbus)
         #get video uri
         videouri=self.getRandomVideo()
         self.loaded_videos.append(OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b'))
@@ -58,11 +58,11 @@ if __name__ == "__main__":
     print("loaded",RSV.loaded_videos)
 
     for i in range(3,6):
-        print("loop ",i)
+        #print("loop ",i)
         #remove finished video
         RSV.loaded_videos.pop(0).quit()
         #play loaded and ready video 
-        print("loaded",RSV.loaded_videos)
+        #print("loaded",RSV.loaded_videos)
         RSV.loaded_videos[-1].play()
         #load next video
         start = time.time()
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         next_thread.start()
         end = time.time()
         elapsed=(end-start)
-        time.sleep(RSV.loaded_videos[0].duration()-0.7)
+        time.sleep(RSV.loaded_videos[0].duration()-1)
 
 
 
