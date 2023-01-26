@@ -42,7 +42,7 @@ loaded_videos[0].play()
 sleep(loaded_videos[0].duration())
 
 #video end, theres a second video loaded
-"""
+
 for i in range(5):
     print("loop ",i)
     #remove finished video
@@ -53,7 +53,7 @@ for i in range(5):
     next_thread = threading.Thread(target=loadNextVideo, args=(i,))
     next_thread.start()
     sleep(loaded_videos[0].duration())
-"""
+
 
 
 """
