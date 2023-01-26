@@ -13,6 +13,6 @@ sudo INSTALL.sh
 ### Execute
 Software will run automatically on boot
 
-Put a pendrive with the videos in a pen drive before booting
-All videos (with .mp4 extension) inside the pendrive will be copied
-You can remove the pendrive after player starts
+Put a pendrive with videos in it before booting
+All videos (with .mp4 extension in any folder) inside the pendrive will be copied
+You can remove the pendrive after player starts and does not need to be present till videos need to be replaced

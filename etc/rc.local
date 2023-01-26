@@ -26,6 +26,7 @@ cd /home/pi
 count=`ls -1 /media/*.mp4 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then 
+rm /home/pi/raspberry-playlist/videos/*.mp4 
 echo "Copying files from pendrive....."
 find /media '*.mp4' -exec cp -vuni '{}' "/home/pi/raspberry-playlist/videos/" ";"
 else
