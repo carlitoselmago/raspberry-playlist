@@ -1,7 +1,7 @@
 import glob, os
 import random
 from omxplayer.player import OMXPlayer
-from time import sleep
+import time
 import threading
 
 class randomSeamlessVideos():
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     #play first video
     RSV.loaded_videos[0].play()
-    sleep(RSV.loaded_videos[0].duration())
+    time.sleep(RSV.loaded_videos[0].duration())
     #video end, theres a second video loaded
     print("loaded",RSV.loaded_videos)
 
@@ -65,9 +65,12 @@ if __name__ == "__main__":
         print("loaded",RSV.loaded_videos)
         RSV.loaded_videos[-1].play()
         #load next video
+        start = time.time()
         next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
         next_thread.start()
-        sleep(RSV.loaded_videos[0].duration())
+        end = time.time()
+        elapsed=(end-start)
+        time.sleep(RSV.loaded_videos[0].duration()-elapsed)
 
 
 
