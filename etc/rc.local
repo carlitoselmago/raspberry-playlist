@@ -26,15 +26,25 @@ cd /home/pi
 count=`ls -1 /media/*.mp4 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then 
-echo "Copying files from pendrive if present"
-find /media '*.mp4' -exec cp -vuni '{}' "../dest_dir" ";"
+echo "Copying files from pendrive....."
+find /media '*.mp4' -exec cp -vuni '{}' "/home/pi/raspberry-playlist/videos/" ";"
+else
+echo "No videos to copy from external drive"
 fi 
 
-
+echo "Wait 10 seconds..."
 sleep 10
 
+count=`ls -1 /home/pi/raspberry-playlist/videos/*.mp4 2>/dev/null | wc -l`
+if [ $count != 0 ]
+then 
 #create playlist
 cd /home/pi/raspberry-playlist/
 python main.py
+else
+echo "No videos found in /home/pi/raspberry-playlist/videos/"
+echo "Aborted"
+fi 
+
 
 exit 0
