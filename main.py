@@ -54,7 +54,7 @@ if __name__ == "__main__":
     RSV.loaded_videos[0].play()
     sleep(RSV.loaded_videos[0].duration())
     #video end, theres a second video loaded
-
+    print("loaded",RSV.loaded_videos)
     for i in range(5):
         print("loop ",i)
         #remove finished video
