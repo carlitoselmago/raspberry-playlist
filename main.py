@@ -21,9 +21,9 @@ class randomSeamlessVideos():
         self.videos=glob.glob(self.vidfolder+"/*.mp4")
 
         #load first 2 videos
-        self.loaded_videos.append(OMXPlayer(self.getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(0),args='--no-osd --no-keys -b'))
+        self.loaded_videos.append(OMXPlayer(self.getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args='--no-osd --no-keys -b'))
         self.loaded_videos[0].pause()
-        self.loadNextVideo(1)
+        self.loadNextVideo(2)
 
 
     def getRandomVideo(self,lastvideo=False):
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     #video end, theres a second video loaded
     print("loaded",RSV.loaded_videos)
 
-    for i in range(5):
+    for i in range(3,6):
         print("loop ",i)
         #remove finished video
         #RSV.loaded_videos.pop(0)
