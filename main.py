@@ -4,55 +4,67 @@ from omxplayer.player import OMXPlayer
 from time import sleep
 import threading
 
-vidfolder="videos"
+class randomSeamlessVideos():
 
-#settings##################################
+    #settings##################################
 
-playlist_length=10#75600 #based on 8'' average duration of each video
+    playlist_length=10#75600 #based on 8'' average duration of each video
 
-#end settings##############################
+    #end settings##############################
 
-def getRandomVideo(lastvideo=False):
-    pickedvideo=random.choice(videos)
-    if lastvideo:
-        while pickedvideo==lastvideo:
-            pickedvideo=random.choice(videos)
-    return pickedvideo
+    vidfolder="videos"
 
-def loadNextVideo(i): #this will be runned as a thread
-    dbus=1
-    if (i % 2) != 0:
-        #if even
-        dbus=2
-    #get video uri
-    videouri=getRandomVideo()
-    player=OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b') 
-    player.pause()
-    loaded_videos.append(player)
+    loaded_videos=[]
+    videos=[]    
 
-loaded_videos=[]
-videos=glob.glob(vidfolder+"/*.mp4")
+    def __init__(self):
+        self.videos=glob.glob(self.vidfolder+"/*.mp4")
 
-#load first 2 videos
-loaded_videos.append(OMXPlayer(getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args='--no-osd --no-keys -b'))
-loaded_videos[0].pause()
-loadNextVideo(2)
-#play first video
-loaded_videos[0].play()
-sleep(loaded_videos[0].duration())
+        #load first 2 videos
+        self.loaded_videos.append(OMXPlayer(self.getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args='--no-osd --no-keys -b'))
+        self.loaded_videos[0].pause()
+        self.loadNextVideo(2)
 
-#video end, theres a second video loaded
 
-for i in range(5):
-    print("loop ",i)
-    #remove finished video
-    loaded_videos.pop(0)
-    #play loaded and ready video 
-    loaded_videos[0].play()
-    #load next video
-    next_thread = threading.Thread(target=loadNextVideo, args=(i,))
-    next_thread.start()
-    sleep(loaded_videos[0].duration())
+    def getRandomVideo(self,lastvideo=False):
+        pickedvideo=random.choice(self.videos)
+        if lastvideo:
+            while pickedvideo==lastvideo:
+                pickedvideo=random.choice(self.videos)
+        return pickedvideo
+
+    def loadNextVideo(self,i): #this will be runned as a thread
+        dbus=1
+        if (i % 2) != 0:
+            #if even
+            dbus=2
+        #get video uri
+        videouri=self.getRandomVideo()
+        player=OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b') 
+        player.pause()
+        self.loaded_videos.append(player)
+
+
+
+if __name__ == "__main__":
+
+    RSV=randomSeamlessVideos()
+
+    #play first video
+    RSV.loaded_videos[0].play()
+    sleep(RSV.loaded_videos[0].duration())
+    #video end, theres a second video loaded
+
+    for i in range(5):
+        print("loop ",i)
+        #remove finished video
+        RSV.loaded_videos.pop(0)
+        #play loaded and ready video 
+        RSV.loaded_videos[0].play()
+        #load next video
+        next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
+        next_thread.start()
+        sleep(RSV.loaded_videos[0].duration())
 
 
 
