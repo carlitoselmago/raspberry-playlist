@@ -28,4 +28,4 @@ with open('playlist.m3u', 'w') as f:
 
 print("Done, loading playlist and launching player")
 #execute player 
-os.system("vlc -I ncurses --video-on-top --fullscreen --loop --no-osd playlist.m3u")
+#os.system("vlc -I ncurses --video-on-top --fullscreen --loop --no-osd playlist.m3u")
