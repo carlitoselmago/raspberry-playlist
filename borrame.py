@@ -19,7 +19,20 @@ def get_random_video(lastvideo=False):
 
 videos=glob.glob(vidfolder+"/*.mp4")
 
+player = OMXPlayer( videos[0])
+player.pause()
+#player.hide_video()
+player2 = OMXPlayer( videos[1])
+#player2.pause()
+#player2.hide_video()
+
+sleep(player2.duration())
+player.play()
+
+
+"""
 for v in videos:
     player = OMXPlayer( v)
     sleep(player.duration())
     #player1 = OMXPlayer( path + movie[1])
+"""
