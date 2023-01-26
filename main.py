@@ -35,9 +35,10 @@ class randomSeamlessVideos():
 
     def loadNextVideo(self,i): #this will be runned as a thread
         dbus=1
-        if (i % 2) != 0:
+        if (i % 2) == 0:
             #if even
             dbus=2
+        print("dbus",dbus)
         #get video uri
         videouri=self.getRandomVideo()
         player=OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b') 
