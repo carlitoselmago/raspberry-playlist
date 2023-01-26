@@ -1,6 +1,7 @@
 import glob, os
 import random
-#from omxplayer.player import OMXPlayer
+from omxplayer.player import OMXPlayer
+from time import sleep
 vidfolder="videos"
 
 #settings##################################
@@ -19,4 +20,6 @@ def get_random_video(lastvideo=False):
 videos=glob.glob(vidfolder+"/*.mp4")
 
 for v in videos:
-    os.system('omxplayer "{}" > /dev/null'.format(v))
+    player = OMXPlayer( v)
+    sleep(player.duration())
+    #player1 = OMXPlayer( path + movie[1])
