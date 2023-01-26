@@ -1,10 +1,22 @@
-import vlc, time
+import glob, os
+import random
+#from omxplayer.player import OMXPlayer
+vidfolder="videos"
 
-instance = vlc.Instance("--aout=alsa")
-player = instance.media_player_new()
-video = instance.media_new("videos/clip001.mp4")
-player.set_media(video)
+#settings##################################
 
-player.play()
-time.sleep(10)
-player.stop()
+playlist_length=10#75600 #based on 8'' average duration of each video
+
+#end settings##############################
+
+def get_random_video(lastvideo=False):
+    pickedvideo=random.choice(videos)
+    if lastvideo:
+        while pickedvideo==lastvideo:
+            pickedvideo=random.choice(videos)
+    return pickedvideo
+
+videos=glob.glob(vidfolder+"/*.mp4")
+
+for v in video:
+    os.system('omxplayer "{}" > /dev/null'.format(v))
