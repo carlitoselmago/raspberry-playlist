@@ -59,7 +59,7 @@ if __name__ == "__main__":
     for i in range(5):
         print("loop ",i)
         #remove finished video
-        RSV.loaded_videos.pop(0)
+        #RSV.loaded_videos.pop(0)
         #play loaded and ready video 
         print("loaded",RSV.loaded_videos)
         RSV.loaded_videos[-1].play()
