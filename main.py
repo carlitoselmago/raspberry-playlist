@@ -4,7 +4,7 @@ vidfolder="videos"
 
 #settings##################################
 
-playlist_length=324000 #based on 8' average duration of each video
+playlist_length=75600 #based on 8'' average duration of each video
 
 #end settings##############################
 
