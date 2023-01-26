@@ -27,8 +27,8 @@ player2 = OMXPlayer( videos[1],dbus_name='org.mpris.MediaPlayer2.omxplayer2')
 #player2.hide_video()
 
 sleep(player2.duration())
-player2.pause()
-player2.hide_video()
+#player2.pause()
+#player2.hide_video()
 player.play()
 
 
