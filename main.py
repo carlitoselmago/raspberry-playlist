@@ -21,7 +21,7 @@ def getRandomVideo(lastvideo=False):
 
 def loadNextVideo(i): #this will be runned as a thread
     dbus=1
-    if (i % 2) == 0:
+    if (i % 2) != 0:
         #if even
         dbus=2
     #get video uri
@@ -35,6 +35,7 @@ videos=glob.glob(vidfolder+"/*.mp4")
 
 #load first 2 videos
 loaded_videos.append(OMXPlayer(getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args='--no-osd --no-keys -b'))
+loaded_videos[0].pause()
 loadNextVideo(2)
 #play first video
 loaded_videos[0].play()
