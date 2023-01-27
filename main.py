@@ -65,11 +65,11 @@ time.sleep(RSV.loaded_videos[0].duration())
 for i in range(3,160):
     #print("loop ",i)
     #remove finished video
-    RSV.loaded_videos[0].pause()
+    #RSV.loaded_videos[0].pause()
     #play loaded and ready video 
     #print("loaded",RSV.loaded_videos)
     RSV.loaded_videos[-1].play()
-    time.sleep(0.1)
+    time.sleep(0.2)
     start = time.time()
     todelete=RSV.loaded_videos.pop(0)
     #load next video
