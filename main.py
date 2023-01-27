@@ -16,7 +16,7 @@ class randomSeamlessVideos():
     loaded_videos=[]
     videos=[]    
 
-    omxdargs="--no-osd --no-keys -b --video_fifo 0.01"
+    omxdargs="--no-osd --no-keys -b  --nohdmiclocksync"
 
     def __init__(self):
 
