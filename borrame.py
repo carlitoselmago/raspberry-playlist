@@ -50,6 +50,7 @@ sleep(player.duration()-elapsed) #####
 player2.play()
 start = time.time()
 #mientras player2 reproduce, carga otro en dbus1
+player.quit()
 player3 = OMXPlayer( videos[4],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys -b')
 player3.pause()
 end = time.time()
