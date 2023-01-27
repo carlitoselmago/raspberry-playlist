@@ -18,6 +18,10 @@ class randomSeamlessVideos():
     videos=[]    
 
     def __init__(self):
+
+        #kill any left omx dbus process
+        os.exec("pkill -f omx")
+
         self.videos=glob.glob(self.vidfolder+"/*.mp4")
 
         #load first 2 videos
