@@ -84,11 +84,11 @@ while True:
           
             if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= RSV.seamless_gap:
                 shouldwait=False
-                break
+                continue
            
         except :
             shouldwait=False
-            break
+            continue
             # presumably the video/audio playback ended. do what you need to do..
 
     i+=1      
