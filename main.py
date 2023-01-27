@@ -76,7 +76,7 @@ for i in range(3,160):
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(1-elapsed))
+    time.sleep(RSV.loaded_videos[0].duration()-(1.2-elapsed))
 
 
 
