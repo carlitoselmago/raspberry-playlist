@@ -2,7 +2,6 @@ import glob, os
 import random
 from omxplayer.player import OMXPlayer
 import time
-import threading
 
 class randomSeamlessVideos():
 
@@ -60,14 +59,11 @@ RSV=randomSeamlessVideos()
 RSV.loaded_videos[0].play()
 time.sleep(RSV.loaded_videos[0].duration())
 #video end, theres a second video loaded
-#print("loaded",RSV.loaded_videos)
 
-for i in range(3,160):
-    #print("loop ",i)
-    #remove finished video
-    #RSV.loaded_videos[0].pause()
-    #play loaded and ready video 
-    #print("loaded",RSV.loaded_videos)
+i=0
+
+while True:
+
     RSV.loaded_videos[-1].play()
     time.sleep(0.2)
     start = time.time()
@@ -75,80 +71,24 @@ for i in range(3,160):
     #load next video
     
     todelete.quit()
-    #next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
-    #next_thread.start()
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
     time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed))
     shoulwait=True
+
+    #handle the grey area of spected duration with actual ending of the video 
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
-            #print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
+          
             if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= RSV.seamless_gap:
                 shouldwait=False
                 break
-            #print(stat)
-            # check stat if you like, maybe reacting to Stopped if user can stop it..
+           
         except :
-            #print("ENDED")
             shouldwait=False
             break
             # presumably the video/audio playback ended. do what you need to do..
-            
 
-
-
-"""
-
-
-def loadVideo():
-
-
-def nextVideo(index,currentvideo=False):
-    v=getRandomVideo()
-    dbus=1
-    if (index % 2) == 0:
-        #if even
-        dbus=2
-    player=OMXPlayer( v,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b')    
-    player.pause()
-    return player
-
-
-loaded_videos=[]
-videos=glob.glob(vidfolder+"/*.mp4")
-
-#video=getRandomVideo()
-
-nextVideo(0)
-"""
-"""
-for i in range(5):
-    video=getRandomVideo(video)
-    x = threading.Thread(target=nextVideo, args=(i,))
-"""
-
-"""
-for i,v in enumerate(videos):
-    print("Loading video ",i)
-    videosB.append(OMXPlayer( v,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(i),args='--no-osd --no-keys -b'))
-    videosB[i].pause()
-
-print("dbus pool ready")
-"""
-"""
-#pick a video to start have the var declared
-pickedvideo=get_random_video()
-
-print("Creating playlist...")
-with open('playlist.m3u', 'w') as f:
-    for i in range(playlist_length):
-        pickedvideo=get_random_video(pickedvideo)
-        f.write(pickedvideo+"\n")
-
-print("Done, loading playlist and launching player")
-"""
-#execute player 
-#os.system("vlc -I ncurses --video-on-top --fullscreen --loop --no-osd playlist.m3u")
+    i+=1      
