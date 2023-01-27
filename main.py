@@ -7,7 +7,7 @@ class randomSeamlessVideos():
 
     #settings##################################
 
-    seamless_gap=0.1 # time in seconds in wich we should launch the next video based on cpu delay. This needs to be fine tunned, speed might vary if runned from ssh or rc.local
+    seamless_gap=0.2 # time in seconds in wich we should launch the next video based on cpu delay. This needs to be fine tunned, speed might vary if runned from ssh or rc.local
 
     #end settings##############################
 
