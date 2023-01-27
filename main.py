@@ -70,7 +70,7 @@ while True:
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed)) #extra -2 seconds (+elapsed) to force the next fine tuning part
+    time.sleep(RSV.loaded_videos[0].duration()-(3-elapsed)) #extra seconds (+elapsed) to force the next fine tuning part
     shoulwait=True
 
     #handle the grey area of spected duration with the actual ending of the video 
