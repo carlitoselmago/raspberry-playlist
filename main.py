@@ -9,6 +9,7 @@ class randomSeamlessVideos():
     #settings##################################
 
     playlist_length=10#75600 #based on 8'' average duration of each video
+    seamless_gap=0.2 # time in seconds in wich we should launch the next video based on cpu delay
 
     #end settings##############################
 
@@ -81,7 +82,10 @@ for i in range(3,160):
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
-            print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
+            #print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
+            if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= seamless_gap:
+                shouldwait=False
+                break
             #print(stat)
             # check stat if you like, maybe reacting to Stopped if user can stop it..
         except :
