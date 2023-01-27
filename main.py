@@ -76,7 +76,16 @@ for i in range(3,160):
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(1.5-elapsed))
+    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed))
+    shoulwait=True
+    while shoulwait:
+        try:
+            stat = RSV.loaded_videos[0].playback_status()
+            # check stat if you like, maybe reacting to Stopped if user can stop it..
+        except :
+            shouldwait=False
+            # presumably the video/audio playback ended. do what you need to do..
+            pass
 
 
 
