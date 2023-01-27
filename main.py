@@ -16,6 +16,8 @@ class randomSeamlessVideos():
     loaded_videos=[]
     videos=[]    
 
+    omxdargs="--no-osd --no-keys -b --video_fifo 0.01"
+
     def __init__(self):
 
         #kill any left omx dbus process
@@ -24,7 +26,7 @@ class randomSeamlessVideos():
         self.videos=glob.glob(self.vidfolder+"/*.mp4")
 
         #load first 2 videos
-        self.loaded_videos.append(OMXPlayer(self.getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args='--no-osd --no-keys -b'))
+        self.loaded_videos.append(OMXPlayer(self.getRandomVideo(),dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(1),args=self.omxdargs))
         self.loaded_videos[0].pause()
         self.loadNextVideo(2)
 
@@ -44,7 +46,7 @@ class randomSeamlessVideos():
         #print("dbus",dbus)
         #get video uri
         videouri=self.getRandomVideo()
-        self.loaded_videos.append(OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b --nohdmiclocksync '))
+        self.loaded_videos.append(OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args=self.omxdargs))
         self.loaded_videos[-1].pause()
         #self.loaded_videos.append(player)
 
