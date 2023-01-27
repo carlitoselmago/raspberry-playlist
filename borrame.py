@@ -24,9 +24,9 @@ def get_random_video(lastvideo=False):
 videos=glob.glob(vidfolder+"/*.mp4")
 
 #primeros dos ready
-player = OMXPlayer( videos[0],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys ')
+player = OMXPlayer( videos[0],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys -b')
 player.pause()
-player2 = OMXPlayer( videos[1],dbus_name='org.mpris.MediaPlayer2.omxplayer2',args='--no-osd --no-keys ')
+player2 = OMXPlayer( videos[1],dbus_name='org.mpris.MediaPlayer2.omxplayer2',args='--no-osd --no-keys -b')
 #reproduce player2
 sleep(player2.duration()) #####
 
@@ -36,20 +36,20 @@ player.play()
 #mientras reproduce player1
 start = time.time()
 player2.quit()
-player2 = OMXPlayer( videos[2],dbus_name='org.mpris.MediaPlayer2.omxplayer3',args='--no-osd --no-keys ')
+player2 = OMXPlayer( videos[2],dbus_name='org.mpris.MediaPlayer2.omxplayer3',args='--no-osd --no-keys -b')
 player2.pause() 
 #player.exitEvent += lambda _, exit_code: player2.play()
 
 end = time.time()
 elapsed=(end-start)
 #reproduce player1
-sleep(player.duration()) #####
+sleep(player.duration()-elapsed) #####
 
 
 player2.play()
 start = time.time()
 #mientras player2 reproduce, carga otro en dbus1
-player = OMXPlayer( videos[4],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys ')
+player = OMXPlayer( videos[4],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys -b')
 player.pause()
 end = time.time()
 elapsed=(end-start)
