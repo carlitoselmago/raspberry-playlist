@@ -28,7 +28,7 @@ if [ $count != 0 ]
 then 
 rm /home/pi/raspberry-playlist/videos/*.mp4 
 echo "Copying files from pendrive....."
-find /media '*.mp4' -exec cp -vuni '{}' "/home/pi/raspberry-playlist/videos/" ";"
+find /media -name '*.mp4' -exec cp {} /home/pi/raspberry-playlist/videos \;
 else
 echo "No videos to copy from external drive"
 fi 
@@ -39,7 +39,7 @@ sleep 10
 count=`ls -1 /home/pi/raspberry-playlist/videos/*.mp4 2>/dev/null | wc -l`
 if [ $count != 0 ]
 then 
-#create playlist
+#run player
 cd /home/pi/raspberry-playlist/
 python main.py
 else
