@@ -25,12 +25,12 @@ videos=glob.glob(vidfolder+"/*.mp4")
 player = OMXPlayer( videos[0],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args='--no-osd --no-keys -b')
 player.pause()
 player2 = OMXPlayer( videos[1],dbus_name='org.mpris.MediaPlayer2.omxplayer2',args='--no-osd --no-keys -b')
-sleep(player2.duration())
+sleep(player2.duration()) #####
 
 player.play()
 player2 = OMXPlayer( videos[2],dbus_name='org.mpris.MediaPlayer2.omxplayer3',args='--no-osd --no-keys -b')
-player2.pause()
-sleep(player.duration())
+player2.pause() #####
+sleep(player.duration()-1)
 
 player2.play()
 """
