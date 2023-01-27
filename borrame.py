@@ -54,6 +54,7 @@ player = OMXPlayer( videos[4],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args
 player.pause()
 end = time.time()
 elapsed=(end-start)
+print("times",player2.duration(),elapsed)
 sleep(player2.duration()-elapsed) #####
 
 player.play()
