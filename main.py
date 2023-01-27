@@ -9,7 +9,7 @@ class randomSeamlessVideos():
     #settings##################################
 
     playlist_length=10#75600 #based on 8'' average duration of each video
-    seamless_gap=0.2 # time in seconds in wich we should launch the next video based on cpu delay
+    seamless_gap=0.4 # time in seconds in wich we should launch the next video based on cpu delay
 
     #end settings##############################
 
