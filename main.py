@@ -63,7 +63,7 @@ i=3
 while True:
 
     RSV.loaded_videos[-1].play()
-    time.sleep(0.1) #this prevents a blank frame gap, giving time to play the next video before last gets deleted
+    time.sleep(0.2) #this prevents a blank frame gap, giving time to play the next video before last gets deleted
     start = time.time()
     todelete=RSV.loaded_videos.pop(0)
     #load next video
