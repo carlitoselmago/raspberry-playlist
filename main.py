@@ -20,7 +20,7 @@ class randomSeamlessVideos():
     def __init__(self):
 
         #kill any left omx dbus process
-        os.exec("pkill -f omx")
+        os.system("pkill -f omx")
 
         self.videos=glob.glob(self.vidfolder+"/*.mp4")
 

@@ -11,7 +11,7 @@ playlist_length=10#75600 #based on 8'' average duration of each video
 #end settings##############################
 
 #kill any left omx dbus process
-os.exec("pkill -f omx")
+os.system("pkill -f omx")
 
 def get_random_video(lastvideo=False):
     pickedvideo=random.choice(videos)
