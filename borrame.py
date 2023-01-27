@@ -2,6 +2,7 @@ import glob, os
 import random
 from omxplayer.player import OMXPlayer
 from time import sleep
+import time
 vidfolder="videos"
 
 #settings##################################
