@@ -60,7 +60,7 @@ RSV.loaded_videos[0].play()
 time.sleep(RSV.loaded_videos[0].duration())
 #video end, theres a second video loaded
 
-i=0
+i=3
 
 while True:
 
