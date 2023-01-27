@@ -30,7 +30,7 @@ sleep(player2.duration()) #####
 player.play()
 player2 = OMXPlayer( videos[2],dbus_name='org.mpris.MediaPlayer2.omxplayer3',args='--no-osd --no-keys -b')
 player2.pause() 
-sleep(player.duration()-1) #####
+sleep(player.duration()-0.2) #####
 
 player2.play()
 sleep(player2.duration()) #####
