@@ -83,7 +83,7 @@ for i in range(3,160):
         try:
             stat = RSV.loaded_videos[0].playback_status()
             #print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
-            if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= seamless_gap:
+            if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= RSV.seamless_gap:
                 shouldwait=False
                 break
             #print(stat)
