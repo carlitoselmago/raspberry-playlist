@@ -69,9 +69,10 @@ for i in range(3,160):
     #play loaded and ready video 
     #print("loaded",RSV.loaded_videos)
     RSV.loaded_videos[-1].play()
+    start = time.time()
     todelete=RSV.loaded_videos.pop(0)
     #load next video
-    start = time.time()
+    
     todelete.quit()
     #next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
     #next_thread.start()
@@ -83,7 +84,7 @@ for i in range(3,160):
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
-            print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
+            #print(RSV.loaded_videos[0].position(),RSV.loaded_videos[0].duration())
             if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= RSV.seamless_gap:
                 shouldwait=False
                 break
