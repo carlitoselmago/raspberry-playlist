@@ -45,7 +45,7 @@ class randomSeamlessVideos():
         #print("dbus",dbus)
         #get video uri
         videouri=self.getRandomVideo()
-        self.loaded_videos.append(OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b'))
+        self.loaded_videos.append(OMXPlayer( videouri,dbus_name='org.mpris.MediaPlayer2.omxplayer'+str(dbus),args='--no-osd --no-keys -b --nohdmiclocksync --refresh'))
         self.loaded_videos[-1].pause()
         #self.loaded_videos.append(player)
 
