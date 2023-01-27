@@ -26,12 +26,14 @@ player = OMXPlayer( videos[0],dbus_name='org.mpris.MediaPlayer2.omxplayer1',args
 player.pause()
 player2 = OMXPlayer( videos[1],dbus_name='org.mpris.MediaPlayer2.omxplayer2',args='--no-osd --no-keys -b')
 sleep(player2.duration()) #####
-
+start = time.time()
 player.play()
 player2 = OMXPlayer( videos[2],dbus_name='org.mpris.MediaPlayer2.omxplayer3',args='--no-osd --no-keys -b')
 player2.pause() 
-player.exitEvent += lambda _, exit_code: player2.play()
-#sleep(player.duration()-0.2) #####
+#player.exitEvent += lambda _, exit_code: player2.play()
+end = time.time()
+elapsed=(end-start)
+sleep(player.duration()-elapsed) #####
 
 player2.play()
 sleep(player2.duration()) #####
