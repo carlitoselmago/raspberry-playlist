@@ -81,11 +81,13 @@ for i in range(3,160):
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
+            print(stat)
             # check stat if you like, maybe reacting to Stopped if user can stop it..
         except :
+            print("ENDED")
             shouldwait=False
             # presumably the video/audio playback ended. do what you need to do..
-            pass
+            
 
 
 
