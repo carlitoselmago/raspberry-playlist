@@ -23,3 +23,7 @@ Put a pendrive with videos in it before booting
 All videos (with .mp4 extension in any folder) inside the pendrive will be copied
 Previous copied videos will be erased
 You can remove the pendrive after player starts and does not need to be present until videos need to be replaced
+
+
+### Known bugs
+First/second video to play on boot might suffer from some gap
