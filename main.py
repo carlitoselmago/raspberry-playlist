@@ -65,7 +65,7 @@ time.sleep(RSV.loaded_videos[0].duration())
 for i in range(3,160):
     #print("loop ",i)
     #remove finished video
-    
+    RSV.loaded_videos[0].pause()
     #play loaded and ready video 
     #print("loaded",RSV.loaded_videos)
     RSV.loaded_videos[-1].play()
