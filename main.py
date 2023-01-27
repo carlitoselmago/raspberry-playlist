@@ -65,7 +65,7 @@ i=3
 while True:
 
     RSV.loaded_videos[-1].play()
-    time.sleep(0.2)
+    time.sleep(0.2) #this prevents a blank frame gap, giving time to play the next video before last gets deleted
     start = time.time()
     todelete=RSV.loaded_videos.pop(0)
     #load next video
@@ -74,10 +74,10 @@ while True:
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed))
+    time.sleep(RSV.loaded_videos[0].duration()-(elapsed))
     shoulwait=True
 
-    #handle the grey area of spected duration with actual ending of the video 
+    #handle the grey area of spected duration with the actual ending of the video 
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
