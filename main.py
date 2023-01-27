@@ -86,6 +86,7 @@ for i in range(3,160):
         except :
             print("ENDED")
             shouldwait=False
+            break
             # presumably the video/audio playback ended. do what you need to do..
             
 
