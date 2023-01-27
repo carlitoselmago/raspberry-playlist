@@ -47,30 +47,31 @@ class randomSeamlessVideos():
 
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
 
-    RSV=randomSeamlessVideos()
+RSV=randomSeamlessVideos()
 
-    #play first video
-    RSV.loaded_videos[0].play()
-    time.sleep(RSV.loaded_videos[0].duration())
-    #video end, theres a second video loaded
-    print("loaded",RSV.loaded_videos)
+#play first video
+RSV.loaded_videos[0].play()
+time.sleep(RSV.loaded_videos[0].duration())
+#video end, theres a second video loaded
+print("loaded",RSV.loaded_videos)
 
-    for i in range(3,6):
-        #print("loop ",i)
-        #remove finished video
-        RSV.loaded_videos.pop(0).quit()
-        #play loaded and ready video 
-        #print("loaded",RSV.loaded_videos)
-        RSV.loaded_videos[-1].play()
-        #load next video
-        start = time.time()
-        next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
-        next_thread.start()
-        end = time.time()
-        elapsed=(end-start)
-        time.sleep(RSV.loaded_videos[0].duration()-1)
+for i in range(3,6):
+    #print("loop ",i)
+    #remove finished video
+    todelete=RSV.loaded_videos.pop(0)
+    #play loaded and ready video 
+    #print("loaded",RSV.loaded_videos)
+    RSV.loaded_videos[-1].play()
+    #load next video
+    start = time.time()
+    todelete.quit()
+    next_thread = threading.Thread(target=RSV.loadNextVideo, args=(i,))
+    next_thread.start()
+    end = time.time()
+    elapsed=(end-start)
+    time.sleep(RSV.loaded_videos[0].duration()-(1-elapsed))
 
 
 
