@@ -43,6 +43,7 @@ player2.pause()
 end = time.time()
 elapsed=(end-start)
 #reproduce player1
+print("times",player.duration(),elapsed)
 sleep(player.duration()-elapsed) #####
 
 
