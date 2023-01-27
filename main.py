@@ -7,7 +7,6 @@ class randomSeamlessVideos():
 
     #settings##################################
 
-    playlist_length=10#75600 #based on 8'' average duration of each video
     seamless_gap=0.4 # time in seconds in wich we should launch the next video based on cpu delay
 
     #end settings##############################
@@ -50,9 +49,6 @@ class randomSeamlessVideos():
         #self.loaded_videos.append(player)
 
 
-
-#if __name__ == "__main__":
-
 RSV=randomSeamlessVideos()
 
 #play first video
@@ -74,7 +70,7 @@ while True:
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed)) #extra -2 seconds to force the next fine tuning part
+    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed)) #extra -2 seconds (+elapsed) to force the next fine tuning part
     shoulwait=True
 
     #handle the grey area of spected duration with the actual ending of the video 
