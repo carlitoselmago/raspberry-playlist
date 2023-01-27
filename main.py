@@ -7,7 +7,7 @@ class randomSeamlessVideos():
 
     #settings##################################
 
-    seamless_gap=0.4 # time in seconds in wich we should launch the next video based on cpu delay
+    seamless_gap=0.2 # time in seconds in wich we should launch the next video based on cpu delay. This needs to be fine tunned, speed might vary if runned from ssh or rc.local
 
     #end settings##############################
 
@@ -70,7 +70,7 @@ while True:
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(elapsed)) #extra -2 seconds (+elapsed) to force the next fine tuning part
+    time.sleep(RSV.loaded_videos[0].duration()-(2-elapsed)) #extra -2 seconds (+elapsed) to force the next fine tuning part
     shoulwait=True
 
     #handle the grey area of spected duration with the actual ending of the video 
