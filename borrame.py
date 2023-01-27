@@ -34,7 +34,7 @@ player2.pause()
 #player.exitEvent += lambda _, exit_code: player2.play()
 end = time.time()
 elapsed=(end-start)
-print("elapsed",elapsed)
+#print("elapsed",elapsed)
 sleep(player.duration()-elapsed) #####
 
 player2.play()
