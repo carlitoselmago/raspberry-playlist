@@ -14,7 +14,7 @@ class randomSeamlessVideos():
     vidfolder="videos"
 
     loaded_videos=[]
-    videos=[]    
+    videos=[]
 
     omxdargs="--no-osd --no-keys -b  --nohdmiclocksync"
 
@@ -59,15 +59,17 @@ time.sleep(RSV.loaded_videos[0].duration())
 #video end, theres a second video loaded
 
 i=3
+layer=0
 
 while True:
-
+    layer+=1
     RSV.loaded_videos[-1].play()
+    RSV.loaded_videos[-1].set_layer(layer)
     time.sleep(0.2) #this prevents a blank frame gap, giving time to play the next video before last gets deleted
     start = time.time()
     todelete=RSV.loaded_videos.pop(0)
     #load next video
-    
+
     todelete.quit()
     RSV.loadNextVideo(i)
     end = time.time()
@@ -75,18 +77,18 @@ while True:
     time.sleep(RSV.loaded_videos[0].duration()-(4-elapsed)) #extra seconds (+elapsed) to force the next fine tuning part
     shoulwait=True
 
-    #handle the grey area of spected duration with the actual ending of the video 
+    #handle the grey area of spected duration with the actual ending of the video
     while shoulwait:
         try:
             stat = RSV.loaded_videos[0].playback_status()
-          
+
             if  (RSV.loaded_videos[0].duration()-RSV.loaded_videos[0].position()) <= RSV.seamless_gap:
                 shouldwait=False
                 break
-           
+
         except :
             shouldwait=False
             break
             # presumably the video/audio playback ended. do what you need to do..
 
-    i+=1      
+    i+=1
