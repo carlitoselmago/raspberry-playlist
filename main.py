@@ -75,7 +75,7 @@ while True:
     end = time.time()
     elapsed=(end-start)
 
-    margin=2
+    margin=3
     if RSV.loaded_videos[0].duration()>6:
         margin=6
     if RSV.loaded_videos[0].duration()>15:
@@ -96,5 +96,5 @@ while True:
             shouldwait=False
             break
             # presumably the video/audio playback ended. do what you need to do..
-        time.sleep(0.001)
+        time.sleep(0.0001)
     i+=1
