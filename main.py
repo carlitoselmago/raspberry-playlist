@@ -59,12 +59,12 @@ time.sleep(RSV.loaded_videos[0].duration())
 #video end, theres a second video loaded
 
 i=3
-layer=0
+
 
 while True:
-    layer+=1
+
     RSV.loaded_videos[-1].play()
-    RSV.loaded_videos[-1].set_layer(layer)
+    RSV.loaded_videos[-1].set_layer(i)
     time.sleep(0.2) #this prevents a blank frame gap, giving time to play the next video before last gets deleted
     start = time.time()
     todelete=RSV.loaded_videos.pop(0)
@@ -74,7 +74,13 @@ while True:
     RSV.loadNextVideo(i)
     end = time.time()
     elapsed=(end-start)
-    time.sleep(RSV.loaded_videos[0].duration()-(4-elapsed)) #extra seconds (+elapsed) to force the next fine tuning part
+
+    margin=2
+    if RSV.loaded_videos[0].duration()>6:
+        margin=6
+    if RSV.loaded_videos[0].duration()>15:
+        margin=10
+    time.sleep(RSV.loaded_videos[0].duration()-(margin+elapsed)) #extra seconds (+elapsed) to force the next fine tuning part
     shoulwait=True
 
     #handle the grey area of spected duration with the actual ending of the video
@@ -90,5 +96,5 @@ while True:
             shouldwait=False
             break
             # presumably the video/audio playback ended. do what you need to do..
-
+        time.sleep(0.001)
     i+=1
