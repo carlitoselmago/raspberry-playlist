@@ -1,6 +1,6 @@
 # Raspberry playlist
 
-Creates a video player with infinite random seamless playback
+Creates a dinamic random video player with infinite random seamless playback based on Omxplayer
 
 (Tested on Raspberry 3)
 
@@ -26,4 +26,4 @@ You can remove the pendrive after player starts and does not need to be present 
 
 
 ### Known bugs
-First/second video to play on boot might suffer from some gap
+videos shorter than 3 seconds might break the playback
