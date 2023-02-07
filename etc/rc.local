@@ -25,30 +25,31 @@ sleep 5
 #copy any mp4 file found in external drives
 count=`find "/media" -type f -name "*.mp4" 2>/dev/null | wc -l`
 if [ $count != 0 ]
-then 
-rm /home/pi/raspberry-playlist/videos/*.mp4 
+then
+rm /home/pi/raspberry-playlist/videos/*.mp4
 echo "Copying files from pendrive....."
 find /media -name '*.mp4' -exec cp {} /home/pi/raspberry-playlist/videos \;
 else
 echo "No videos to copy from external drive"
-fi 
+fi
 
 echo "Wait 10 seconds..."
 sleep 10
 
 count=`ls -1 /home/pi/raspberry-playlist/videos/*.mp4 2>/dev/null | wc -l`
 if [ $count != 0 ]
-then 
+then
 #run player
+
 cd /home/pi/raspberry-playlist/
-python main.py
+sudo -u pi python main.py
 else
 echo "No videos found in /home/pi/raspberry-playlist/videos/"
 echo "Aborted"
 echo ""
 echo ""
 echo ""
-fi 
+fi
 
 
 exit 0
